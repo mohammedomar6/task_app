@@ -11,4 +11,7 @@ abstract class Failure {
   TaskAlreadyExistsFailure(super.message);
 } class CategoryFailure extends Failure{
   CategoryFailure(super.message);
+}class CacheFailure extends Failure{
+  CacheFailure(super.message);
+
 }

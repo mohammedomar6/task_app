@@ -20,7 +20,7 @@ class CategoryModelAdapter extends TypeAdapter<CategoryModel> {
       id: fields[0] as String,
       name: fields[1] as String,
       image: fields[2] as String,
-      priority: (fields[3] as num).toInt(),
+      priority: fields[3] as String,
     );
   }
 

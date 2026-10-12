@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes_app/counter/presentation/manager/counter_provider.dart';
-import 'package:notes_app/counter/presentation/pages/counter_page.dart';
+import 'package:notes_app/task/presentation/manager/category_cubit.dart';
+import 'package:notes_app/task/presentation/pages/category_page.dart';
+import 'package:notes_app/task/presentation/pages/main_page.dart';
 import 'package:provider/provider.dart';
 
 import 'core/di/service_locator.dart';
@@ -25,7 +27,8 @@ void main() async {
       supportedLocales: [Locale('ar'), Locale('en')],
       child: MultiBlocProvider(
         providers: [
-         ChangeNotifierProvider(create: (context) => s1<CounterProvider>(),)
+         ChangeNotifierProvider(create: (context) => s1<CounterProvider>(),),
+          BlocProvider(create: (context) => s1<CategoryCubit>() ,)
         ],
         child: MyApp(),
       ),
@@ -50,7 +53,7 @@ class MyApp extends StatelessWidget {
           darkTheme: darkTheme,
           themeMode: ThemeMode.light,
           debugShowCheckedModeBanner: false,
-          home: CounterPage()
+          home: MainPage(),
       ),
     );
   }

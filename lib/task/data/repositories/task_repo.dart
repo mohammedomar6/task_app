@@ -4,39 +4,53 @@ import 'package:notes_app/task/data/data_sources/local_data_source_task.dart';
 import 'package:dartz/dartz.dart';
 import 'package:notes_app/task/data/models/task_model.dart';
 class TaskRepo {
-    final LocalDataSourceTask localDataSourceTask;
+  final LocalDataSourceTask localDataSourceTask;
 
   TaskRepo({required this.localDataSourceTask});
-   Either<Failure,Unit> addTask(TaskModel task){
+  Future <Either<Failure,Unit>> addTask(TaskModel task)async{
        try {
-         localDataSourceTask.addTask(task);
+        await localDataSourceTask.addTask(task);
          return Right(unit);
        } on TaskAlreadyExistsException catch (e) {
          return Left(TaskAlreadyExistsFailure(e.message));
        }
    }
-   void updateTask(TaskModel task){
+  Future<Either<Failure,Unit>> updateTask(TaskModel task)async{
 
-        localDataSourceTask.updateTask(task);
-
-
-    }
-   List<TaskModel> getTasks(){
-
-      return  localDataSourceTask.getTasks();
-
-
-    }
-    TaskModel? getTasksById(String id){
-
-      return  localDataSourceTask.getTaskById(id);
+       try {
+         await localDataSourceTask.updateTask(task);
+         return Right(unit);
+       } on TaskNotFoundException catch (e) {
+         return Left(TaskNotFoundFailure(e.message));
+       }
 
 
     }
-   Either<Failure,Unit> deleteTask(String id){
+  Either<Failure,List<TaskModel>>getTasks(){
 
+       try {
+         final data=  localDataSourceTask.getTasks();
+         return Right(data);
+       } on Exception catch (e) {
+        return Left(CacheFailure(e.toString()));
+       }
+
+
+    }
+   Either<Failure,TaskModel?>  getTasksById(String id){
+
+      try {
+        final data=  localDataSourceTask.getTaskById(id);
+        return Right(data);
+      } on Exception catch (e) {
+        return Left(CacheFailure(e.toString()));
+      }
+
+
+    }
+  Future <Either<Failure,Unit>> deleteTask(String id)async{
         try {
-          localDataSourceTask.deleteTask(id);
+         await localDataSourceTask.deleteTask(id);
           return Right(unit);
         } on TaskNotFoundException catch (e) {
           return Left(TaskNotFoundFailure(e.message));
