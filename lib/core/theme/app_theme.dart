@@ -6,6 +6,19 @@ import 'app_colors.dart';
 ThemeData get darkTheme => ThemeData();
 
 ThemeData get lightTheme => ThemeData(
+  scaffoldBackgroundColor:   AppColors.backgroundScaffold,
+  appBarTheme: AppBarTheme(
+    backgroundColor: AppColors.backgroundScaffold,
+
+    titleTextStyle: TextStyle(
+      color: AppColors.primary,
+      fontSize: 20.sp,
+      fontWeight: FontWeight.w900,
+    )
+  ),
+  chipTheme: ChipThemeData(
+
+  ),
   inputDecorationTheme: InputDecorationTheme(
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(30.r),

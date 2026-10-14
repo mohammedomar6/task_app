@@ -10,7 +10,9 @@ class CategoryModel {
   final String image;
   @HiveField(3)
   final String priority;
+  @HiveField(4)
+  final String subTitle;
 
-  CategoryModel({required this.id, required this.name, required this.image, required this.priority});
+  CategoryModel( {required this.subTitle,required this.id, required this.name, required this.image, required this.priority});
 
 }

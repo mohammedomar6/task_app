@@ -37,10 +37,14 @@ class CategoryCubit extends Cubit<CategoryState> {
           addCategories: RequestState(status: Status.error, error: l.message),
         ),
       ),
-      (r) => emit(
+      (r) {
+        emit(
         state.copyWith(addCategories: RequestState(status: Status.success)),
-      ),
+      );
+        getAllCategory();
+      },
     );
+
   }
 
   void updateCategory(CategoryModel category) async {
@@ -57,9 +61,12 @@ class CategoryCubit extends Cubit<CategoryState> {
           ),
         ),
       ),
-      (r) => emit(
+      (r) {
+        emit(
         state.copyWith(updateCategories: RequestState(status: Status.success)),
-      ),
+      );
+        getAllCategory();
+      },
     );
   }
   void deleteCategory(String id) async {
@@ -76,9 +83,13 @@ class CategoryCubit extends Cubit<CategoryState> {
           ),
         ),
       ),
-      (r) => emit(
+      (r) {
+        emit(
         state.copyWith(deleteCategories: RequestState(status: Status.success)),
-      ),
+      );
+     getAllCategory();
+      },
     );
+
   }
 }
