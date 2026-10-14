@@ -18,9 +18,13 @@ class TaskModel {
   final DateTime createdAt;
   @HiveField(4)
   final CategoryModel categoryModel;
+  @HiveField(5)
+  final DateTime due;
 
-  const TaskModel( {
-    required this.id,
+  const TaskModel(
+      {
+     required   this.due,
+        required this.id,
     required this.title,
     required this.categoryModel,
     this.isCompleted = false,
