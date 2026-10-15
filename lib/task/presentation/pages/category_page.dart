@@ -98,6 +98,7 @@ class _CategoryPageState extends State<CategoryPage> {
                  const StartSection(),
                   Center(
                     child: TextFieldWidget(
+
                       width: 350.w,
                       height: 52.h,
                       hint: 'ابحثي عن صنف، وسم، أو كود التصنيف (#CAT)...',

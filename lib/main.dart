@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes_app/counter/presentation/manager/counter_provider.dart';
 import 'package:notes_app/task/presentation/manager/category_cubit.dart';
 import 'package:notes_app/task/presentation/pages/category_page.dart';
+import 'package:notes_app/task/presentation/pages/main_page.dart';
 
 import 'package:provider/provider.dart';
 
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
           darkTheme: darkTheme,
           themeMode: ThemeMode.light,
           debugShowCheckedModeBanner: false,
-          home: CategoryPage(),
+          home: MainPage(),
       ),
     );
   }

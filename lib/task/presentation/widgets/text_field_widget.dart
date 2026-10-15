@@ -10,13 +10,16 @@ class TextFieldWidget extends StatelessWidget {
     required this.height,
     required this.hint,
     this.textEditingController,
-    this.onChanged,
+    this.onChanged,  this.suffix,
+    this.onTap,
   });
 
   final void Function(String)? onChanged;
   final double width;
   final TextEditingController? textEditingController;
   final double height;
+  final IconData? suffix;
+  final void Function()? onTap;
 
   final String hint;
 
@@ -31,7 +34,9 @@ class TextFieldWidget extends StatelessWidget {
         controller: textEditingController,
         cursorColor: AppColors.primary,
         decoration: InputDecoration(
-          suffixIcon: Icon(Icons.highlight_remove_outlined),
+          suffixIcon: InkWell(
+              onTap: onTap,
+              child: Icon(suffix)),
           prefixIcon: Icon(Icons.search_outlined, color: AppColors.foushi),
 
           hintText: hint,
